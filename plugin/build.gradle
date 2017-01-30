@@ -1,0 +1,34 @@
+apply plugin: 'groovy'
+apply plugin: 'maven'
+
+buildscript {
+  repositories {
+    mavenLocal()
+  }
+
+  dependencies {
+    classpath 'io.ashdavies.gradle:plugin:1.0-SNAPSHOT'
+  }
+}
+
+apply plugin: 'travis-support'
+
+dependencies {
+  compile gradleApi()
+
+  testCompile gradleTestKit()
+  testCompile 'junit:junit:4.12'
+  testCompile 'com.google.truth:truth:0.30'
+}
+
+group = 'io.ashdavies.gradle'
+version = '1.0-SNAPSHOT'
+
+uploadArchives {
+  repositories {
+    mavenDeployer {
+      repository(url: mavenLocal().url)
+    }
+  }
+}
+
