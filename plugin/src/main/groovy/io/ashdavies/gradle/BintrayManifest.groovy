@@ -7,7 +7,6 @@ import io.ashdavies.gradle.component.PackageComponent
 import io.ashdavies.gradle.component.VersionComponent
 
 @Builder
-//@Immutable
 class BintrayManifest {
 
   @SerializedName("package")

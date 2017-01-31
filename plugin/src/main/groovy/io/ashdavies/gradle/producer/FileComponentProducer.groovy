@@ -1,11 +1,12 @@
-package io.ashdavies.gradle.generator
+package io.ashdavies.gradle.producer
 
 import io.ashdavies.gradle.component.FileComponent
+import io.ashdavies.gradle.inject.Producer
 
-class FilesGenerator implements ComponentGenerator<FileComponent> {
+class FileComponentProducer implements Producer<FileComponent> {
 
   @Override
-  FileComponent generate() {
+  FileComponent get() {
     FileComponent.builder()
         .includePattern("build/bin(.*)*/(.*\\\\.gem)")
         .excludePattern(".*/do-not-deploy/.*")

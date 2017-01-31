@@ -1,12 +1,13 @@
-package io.ashdavies.gradle.generator
+package io.ashdavies.gradle.producer
 
 import io.ashdavies.gradle.component.AttributeComponent
 import io.ashdavies.gradle.component.VersionComponent
+import io.ashdavies.gradle.inject.Producer
 
-class VersionGenerator implements ComponentGenerator<VersionComponent> {
+class VersionComponentProducer implements Producer<VersionComponent> {
 
   @Override
-  VersionComponent generate() {
+  VersionComponent get() {
     VersionComponent.builder()
         .name("0.5")
         .desc("This is a version")

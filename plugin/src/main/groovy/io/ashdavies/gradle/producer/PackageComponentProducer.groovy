@@ -1,12 +1,13 @@
-package io.ashdavies.gradle.generator
+package io.ashdavies.gradle.producer
 
 import io.ashdavies.gradle.component.AttributeComponent
 import io.ashdavies.gradle.component.PackageComponent
+import io.ashdavies.gradle.inject.Producer
 
-class PackageGenerator implements ComponentGenerator<PackageComponent> {
+class PackageComponentProducer implements Producer<PackageComponent> {
 
   @Override
-  PackageComponent generate() {
+  PackageComponent get() {
     PackageComponent.builder()
         .name("auto-upload")
         .repo("myRepo")
