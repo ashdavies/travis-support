@@ -6,7 +6,7 @@ import org.gradle.api.Project
 class TravisSupportPlugin implements Plugin<Project> {
 
   @Override
-  void apply(Project target) {
-    target.getTasks().create("generateBintrayManifest", GenerateBintrayManifestTask.class)
+  void apply(Project project) {
+    project.getTasks().create("generateBintrayManifest", GenerateBintrayManifestTask.class)
   }
 }

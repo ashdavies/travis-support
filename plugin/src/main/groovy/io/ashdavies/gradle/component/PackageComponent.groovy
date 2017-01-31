@@ -1,10 +1,8 @@
 package io.ashdavies.gradle.component
 
-import groovy.transform.Immutable
 import groovy.transform.builder.Builder
 
 @Builder
-@Immutable
 class PackageComponent {
 
   String name
@@ -16,9 +14,9 @@ class PackageComponent {
   String vcsUrl
   boolean githubUseTagReleaseNotes
   String githubReleaseNotesFile
-  List<String> licenses
-  List<String> labels
+  String[] licenses
+  String[] labels
   boolean publicDownloadNumbers
   boolean publicStats
-  List<AttributeComponent> attributes
+  AttributeComponent[] attributes
 }
