@@ -1,6 +1,8 @@
 package io.ashdavies.gradle
 
-import groovy.json.JsonBuilder
+import com.google.gson.FieldNamingPolicy
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import io.ashdavies.gradle.component.FileComponent
 import io.ashdavies.gradle.component.PackageComponent
 import io.ashdavies.gradle.component.VersionComponent
@@ -17,6 +19,11 @@ class GenerateBintrayManifestTask extends DefaultTask {
   ComponentGenerator<VersionComponent> versionGenerator = new VersionGenerator()
   ComponentGenerator<FileComponent> fileGenerator = new FilesGenerator()
 
+  Gson gson = new GsonBuilder()
+      .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
+      .setPrettyPrinting()
+      .create()
+
   @TaskAction
   void generateBintrayManifest() {
     BintrayManifest manifest = BintrayManifest.builder()
@@ -30,7 +37,7 @@ class GenerateBintrayManifestTask extends DefaultTask {
   }
 
   void write(BintrayManifest manifest) {
-    getOutputFile().write(new JsonBuilder(manifest).toPrettyString())
+    getOutputFile().write(gson.toJson(manifest))
   }
 
   File getOutputFile() {

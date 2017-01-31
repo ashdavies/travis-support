@@ -3,6 +3,7 @@ apply plugin: 'maven'
 
 buildscript {
   repositories {
+    jcenter()
     mavenLocal()
   }
 
@@ -15,6 +16,7 @@ apply plugin: 'travis-support'
 
 dependencies {
   compile gradleApi()
+  compile 'com.google.code.gson:gson:2.8.0'
 
   testCompile gradleTestKit()
   testCompile 'junit:junit:4.12'
